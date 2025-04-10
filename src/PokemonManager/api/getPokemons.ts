@@ -1,0 +1,44 @@
+import { queryOptions, useQuery } from "@tanstack/react-query";
+import type { PokemonListing } from "../types/Pokemon";
+import { pokemonApiQueryKey } from "./queryKey";
+
+type GetPokemonsParams = {
+  limit: number;
+  offset: number;
+};
+
+export function getPokemons({ limit, offset }: GetPokemonsParams) {
+  return fetch(
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+  )
+    .then((response) => response.json())
+    .then(
+      (data) =>
+        data as {
+          count: number;
+          next: string;
+          previous: string;
+          results: PokemonListing[];
+        }
+    );
+}
+
+export function getPokemonsQueryOptions(params: GetPokemonsParams) {
+  return queryOptions({
+    queryKey: [...pokemonApiQueryKey, params],
+    queryFn: () => getPokemons(params),
+  });
+}
+
+export function useGetPokemons({
+  params,
+  queryOptions,
+}: {
+  params: GetPokemonsParams;
+  queryOptions?: Partial<ReturnType<typeof getPokemonsQueryOptions>>;
+}) {
+  return useQuery({
+    ...getPokemonsQueryOptions(params),
+    ...queryOptions,
+  });
+}
