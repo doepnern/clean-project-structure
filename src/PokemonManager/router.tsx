@@ -1,16 +1,16 @@
-import { createHashRouter } from "react-router";
-import { ListPokemons } from "./pages/ListPokemons";
-import { ShowPokemon } from "./pages/ShowPokemon";
-import { ErrorPage } from "./pages/ErrorPage";
+import { createHashRouter } from 'react-router';
+import { ListPokemons } from './pages/ListPokemons';
+import { ShowPokemon } from './pages/ShowPokemon';
+import { ErrorPage } from './pages/ErrorPage';
 
 export const pokemonManagerRouter = createHashRouter([
   {
-    path: "/",
+    path: '/',
     element: <ListPokemons />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/:id",
+    path: '/:id',
     element: <ShowPokemon />,
     errorElement: <ErrorPage />,
   },

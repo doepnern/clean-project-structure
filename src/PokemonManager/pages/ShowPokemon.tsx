@@ -1,11 +1,11 @@
-import { useParams } from "react-router";
-import { useGetPokemon } from "../api/getPokemon";
-import { Container } from "@mantine/core";
-import { z } from "zod";
+import { useParams } from 'react-router';
+import { useGetPokemon } from '../api/getPokemon';
+import { Container } from '@mantine/core';
+import { z } from 'zod';
 
 const prarmsSchema = z.object({
   id: z.coerce.number({
-    message: "id must be a number",
+    message: 'id must be a number',
   }),
 });
 

@@ -1,1 +1,1 @@
-export const pokemonApiQueryKey = ["api", "pokemon"] as const;
+export const pokemonApiQueryKey = ['api', 'pokemon'] as const;
