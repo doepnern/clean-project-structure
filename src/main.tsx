@@ -8,21 +8,20 @@ import "@mantine/core/styles.css";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
 });
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <MantineProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={pokemonManagerRouter} />
-        <ReactQueryDevtools />
-      </QueryClientProvider>
-    </MantineProvider>
-  </StrictMode>
+	<StrictMode>
+		<MantineProvider>
+			<QueryClientProvider client={queryClient}>
+				<RouterProvider router={pokemonManagerRouter} />
+				<ReactQueryDevtools />
+			</QueryClientProvider>
+		</MantineProvider>
+	</StrictMode>,
 );
