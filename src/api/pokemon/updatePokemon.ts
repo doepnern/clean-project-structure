@@ -1,19 +1,25 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { Pokemon } from '../types/Pokemon';
 import { pokemonApiQueryKey } from './queryKey';
-import type { MutationConfig } from './types/types';
+import type { MutationConfig } from '../types';
+import { z } from 'zod';
+import type { Pokemon } from './types';
 
-type UpdatePokemonParams = {
+export const updatePokemonInputSchema = z.object({
+  name: z.string().min(1, 'Pokemon Name muss mindestens ein zeichen lang sein'),
+});
+
+export async function updatePokemon({
+  id,
+  data,
+}: {
   id: number;
-  values: Partial<Pokemon>;
-};
-
-export async function updatePokemon({ id, values }: UpdatePokemonParams) {
+  data: z.infer<typeof updatePokemonInputSchema>;
+}) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         id,
-        ...values,
+        ...data,
       });
     }, 1000);
   }).then((data) => data as Pokemon);

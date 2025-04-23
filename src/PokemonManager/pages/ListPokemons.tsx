@@ -1,3 +1,5 @@
+import { useGetPokemons } from '@/api/pokemon/getPokemons';
+import { useUpdatePokemon } from '@/api/pokemon/updatePokemon';
 import {
   Container,
   Pagination,
@@ -6,10 +8,8 @@ import {
   Grid,
   LoadingOverlay,
 } from '@mantine/core';
-import { useGetPokemons } from '../api/getPokemons';
 import { useState } from 'react';
 import { NavLink as RouterNav } from 'react-router';
-import { useUpdatePokemon } from '../api/updatePokemon';
 
 export function ListPokemons() {
   const [paginationState, setPaginationState] = useState({
@@ -63,7 +63,7 @@ export function ListPokemons() {
                         ];
                       updatePokemon({
                         id: Number.parseInt(id),
-                        values: { name: 'test' },
+                        data: { name: 'test' },
                       });
                     }}
                   >

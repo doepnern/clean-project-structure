@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
-import { useGetPokemon } from '../api/getPokemon';
 import { Container } from '@mantine/core';
 import { z } from 'zod';
+import { useGetPokemon } from '@/api/pokemon/getPokemon';
 
 const prarmsSchema = z.object({
   id: z.coerce.number({

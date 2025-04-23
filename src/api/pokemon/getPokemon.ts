@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
-import type { Pokemon } from '../types/Pokemon';
 import { pokemonApiQueryKey } from './queryKey';
-import type { QueryConfig } from './types/types';
+import type { QueryConfig } from '../types';
+import type { Pokemon } from './types';
 
 type GetPokemonParams = {
   id: number;
@@ -25,7 +25,7 @@ export function useGetPokemon({
   queryOptions,
 }: {
   params: GetPokemonParams;
-  queryOptions?: QueryConfig<typeof getPokemon>;
+  queryOptions?: QueryConfig<typeof getPokemonQueryOptions>;
 }) {
   return useQuery({
     ...getPokemonQueryOptions(params),

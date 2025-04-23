@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
-import type { PokemonListing } from '../types/Pokemon';
 import { pokemonApiQueryKey } from './queryKey';
-import type { QueryConfig } from './types/types';
+import type { QueryConfig } from '../types';
+import type { PokemonListing } from './types';
 
 type GetPokemonsParams = {
   limit: number;
